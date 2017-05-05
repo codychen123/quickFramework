@@ -11,10 +11,8 @@
 #import <AFNetworking/AFNetworking.h>
 
 @interface NetworkRequestTool : NSObject
-@property (assign, nonatomic) BOOL needToken; //是否需要带上token
 @property (copy, nonatomic) NSString *requestMethod; //请求的方法名
 @property (strong, nonatomic) NSMutableDictionary * queryDictionary;//原始query
-@property (assign, nonatomic) BOOL useSecurity; //是否加密解密
 + (NetworkRequestTool *)sharedInstance;
 + (AFHTTPSessionManager *)sharedManager;
 

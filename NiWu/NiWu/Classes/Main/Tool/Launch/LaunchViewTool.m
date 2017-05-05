@@ -7,8 +7,7 @@
  */
 
 #import "LaunchViewTool.h"
-#import "SettingRequestTool.h"
-#import "CheckVersionModel.h"
+//#import "CheckVersionModel.h"
 #import "CheckAppVersionTool.h"
 
 @interface LaunchViewTool()
@@ -24,7 +23,7 @@
     //设置LaunchImageView
     [viewTool addSubview:viewTool.launchImageView];
     //添加异步方法移除启动页
-    [viewTool removeLaunchImageView];
+//    [viewTool removeLaunchImageView];
     //添加到Window上
     [viewTool addInWindow];
 }
@@ -66,29 +65,6 @@
     }
     return nil;
 }
-
-
-- (void)removeLaunchImageView{
-    
-    [SettingRequestTool checkVersion:nil success:^(NSString *returnMessage, id responseObject) {
-        DefaultResponseModel *model = responseObject;
-        NSArray *checkArr = [CheckVersionModel mj_objectArrayWithKeyValuesArray: model.data];
-        if (checkArr.count > 1) {
-            for (CheckVersionModel *versionModel in checkArr) {
-                if ([versionModel.appType isEqualToString:@"ios"]){
-                    [[CheckAppVersionTool sharedInstance] checkAppVessionIsEqualToCurrentVersion:versionModel.checkVersion showVersion:versionModel.version  urlToAppStore:versionModel.apkurl message:versionModel.descriptionField];
-                }
-            }
-        }
-        [self launchRemove];
-    } failure:^(NSString *returnMessage, id responseObject) {
-        [self launchRemove];
-    } errorClourse:^(NSString *errorMessage, NSError *error) {
-        [self launchRemove];
-    }];
-}
-
-
 
 - (void)launchRemove{
     [UIView setAnimationCurve:UIViewAnimationCurveEaseOut];

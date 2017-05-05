@@ -9,7 +9,6 @@
 #import "UIViewController+TL.h"
 #import "UIImage+YYAdd.h"
 #import "MainTabBarController.h"
-#import "LoginViewController.h"
 
 @implementation UIViewController (TL)
 
@@ -313,16 +312,17 @@
 
 
 - (BOOL)isNeedLogin {
-    BOOL isCompleteLogin = [[GlobalDataModel sharedInstance] isCompleteLogin];
-    if (isCompleteLogin == NO) {
-        LoginViewController *vc = [[LoginViewController alloc] init];
-        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
-        [KEY_WINDOW.rootViewController presentViewController:nav animated:YES completion:nil];
-        return YES;
-    }
-    else {
-        return NO;
-    }
+//    BOOL isCompleteLogin = [[GlobalDataModel sharedInstance] isCompleteLogin];
+//    if (isCompleteLogin == NO) {
+//        LoginViewController *vc = [[LoginViewController alloc] init];
+//        UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+//        [KEY_WINDOW.rootViewController presentViewController:nav animated:YES completion:nil];
+//        return YES;
+//    }
+//    else {
+//        return NO;
+//    }
+    return NO;
 }
 
 

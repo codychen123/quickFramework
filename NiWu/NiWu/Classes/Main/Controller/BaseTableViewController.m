@@ -15,10 +15,6 @@
 @end
 
 @implementation BaseTableViewController
-- (void)pushStoryboard:(NSString *)sbname withId:(NSString *)name{
-    UIViewController *vc = loadViewControllerFromSb(sbname, name);
-    [self.navigationController pushViewController:vc animated:YES];
-}
 - (void)viewDidLoad {
     [super viewDidLoad];
     

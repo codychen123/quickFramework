@@ -8,14 +8,11 @@
 
 
 #import "MainTabBarController.h"
-#import "NewHomeViewController.h"
-#import "BaseWebViewController.h"
-#import "NewPEBViewController.h"
-#import "CommunityViewController.h"
-#import "MineTableViewController.h"
-#import "NewAgainPEBViewController.h"
-#import "NewAgainAndAgainPEBViewController.h"
 #import "CheckAppVersionTool.h"
+#import "MineViewController.h"
+#import "DiscoverViewController.h"
+#import "ShopViewController.h"
+#import "MessageViewController.h"
 
 @interface MainTabBarController()<UINavigationControllerDelegate , UITabBarControllerDelegate>
 
@@ -33,40 +30,33 @@
 
 - (void)setupUI
 {
-    //首页
-    NewHomeViewController *homeVC = [[NewHomeViewController alloc] init];
-    UINavigationController *nav_home = [[UINavigationController alloc]initWithRootViewController:homeVC];
+    //发现
+    DiscoverViewController *discoverVC = [[DiscoverViewController alloc] init];
+    UINavigationController *nav_home = [[UINavigationController alloc]initWithRootViewController:discoverVC];
     nav_home.delegate = self;
 
-    //普银
-    NewAgainAndAgainPEBViewController *pebVC = [NewAgainAndAgainPEBViewController storyboardName:@"PEB" className:@"NewAgainAndAgainPEBViewController"];
-    UINavigationController *nav_peb = [[UINavigationController alloc] initWithRootViewController:pebVC];
+    //购物
+    ShopViewController *shopVC = [[ShopViewController alloc] init];
+    UINavigationController *nav_peb = [[UINavigationController alloc] initWithRootViewController:shopVC];
     nav_peb.delegate = self;
 
     
-    //社区
-    CommunityViewController *communityVC = [[CommunityViewController alloc] init];
-    UINavigationController *nav_community = [[UINavigationController alloc] initWithRootViewController:communityVC];
+    //消息
+    MessageViewController *messageVC = [[MessageViewController alloc] init];
+    UINavigationController *nav_community = [[UINavigationController alloc] initWithRootViewController:messageVC];
     nav_community.delegate = self;
     
     
     //我的
-    MineTableViewController *mineVc = [[MineTableViewController alloc] init];
-    UINavigationController *nav_mine = [[UINavigationController alloc] initWithRootViewController:mineVc];
+    MineViewController *mineVC = [[MineViewController alloc] init];
+    UINavigationController *nav_mine = [[UINavigationController alloc] initWithRootViewController:mineVC];
     nav_mine.delegate = self;
     // 屏蔽
-    if ([CheckAppVersionTool sharedInstance].isShow) {
         self.viewControllers = [NSArray arrayWithObjects:nav_home,nav_peb,nav_community,nav_mine, nil];
-        [self setupItemWithTitle:@"首页" image:@"in_ricon0" selectImage:@"in_hicon0" index:0];
-        [self setupItemWithTitle:@"普银" image:@"in_ricon1" selectImage:@"in_hicon1" index:1];
-        [self setupItemWithTitle:@"社区" image:@"in_ricon2" selectImage:@"in_hicon2" index:2];
+        [self setupItemWithTitle:@"发现" image:@"in_ricon0" selectImage:@"in_hicon0" index:0];
+        [self setupItemWithTitle:@"购物" image:@"in_ricon1" selectImage:@"in_hicon1" index:1];
+        [self setupItemWithTitle:@"消息" image:@"in_ricon2" selectImage:@"in_hicon2" index:2];
         [self setupItemWithTitle:@"我的" image:@"in_ricon3" selectImage:@"in_hicon3" index:3];
-    }else{
-        self.viewControllers = [NSArray arrayWithObjects:nav_home,nav_community,nav_mine, nil];
-        [self setupItemWithTitle:@"首页" image:@"in_ricon0" selectImage:@"in_hicon0" index:0];
-        [self setupItemWithTitle:@"社区" image:@"in_ricon2" selectImage:@"in_hicon2" index:1];
-        [self setupItemWithTitle:@"我的" image:@"in_ricon3" selectImage:@"in_hicon3" index:2];
-    }
     
     //自定义底部颜色
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectMake(0,0, SCREEN_WIDTH, 1)];
@@ -123,27 +113,6 @@
 //        }
 //    }
     
-}
-
-
-- (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated
-{
-//    if ([viewController isKindOfClass:[MineViewController class]]||[viewController isKindOfClass:[RightsAndInterestsViewController class]]||[viewController isKindOfClass:[ZSMemberMoreViewController class]]) {
-//        [navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:ORANGE_COLOR] forBarMetrics:UIBarMetricsDefault];
-//        [navigationController.navigationBar setBackgroundColor:ORANGE_COLOR];
-//        [navigationController.navigationBar setBarStyle:UIBarStyleDefault];
-//        [navigationController.navigationBar setTintColor:ORANGE_COLOR];
-//        [navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor], NSFontAttributeName:[UIFont fontWithName:DEFAULTFONT size:17.0f]}];
-//        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleLightContent;
-//        
-//    }else{
-//        [navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor whiteColor]] forBarMetrics:UIBarMetricsDefault];
-//        [navigationController.navigationBar setBackgroundColor:[UIColor whiteColor]];
-//        [navigationController.navigationBar setBarStyle:UIBarStyleDefault];
-//        [navigationController.navigationBar setTintColor:NAV_TINT_COLOR];
-//        [navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:NAV_TEXT_COLOR, NSFontAttributeName:[UIFont fontWithName:DEFAULTFONT size:17.0f]}];
-//        [UIApplication sharedApplication].statusBarStyle = UIStatusBarStyleDefault;
-//    }
 }
 
 @end

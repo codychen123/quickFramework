@@ -19,5 +19,7 @@ pod 'PYSearch'
 pod 'AMPopTip'
 pod 'ZFPlayer'
 pod ‘Masonry’
+pod 'IQKeyboardManager'
+pod 'TSMessages'
 
 end

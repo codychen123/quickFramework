@@ -96,8 +96,7 @@
 
 #define L(name) NSLocalizedString(name, nil)
 
-typedef NS_ENUM(NSInteger, RedEnvelopeType) {
-    RedEnvelopeTypeReceive = 0, // 我收到的
-    RedEnvelopeTypeSend
-};
+typedef void (^CommonBlockVoid)(id obj);
+typedef id (^CommonBlock)(id obj);
+
 #endif

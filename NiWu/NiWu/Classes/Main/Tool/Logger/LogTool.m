@@ -13,7 +13,7 @@
 #import <CocoaLumberjack/DDFileLogger.h>
 #import <CocoaLumberjack/DDASLLogger.h>
 #import "SystemInfo.h"
-
+#import "ProjectInfoTool.h"
 
 @interface LogTool()<DDLogFormatter>
 

@@ -98,7 +98,7 @@
     //创建网页内容对象
     UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:@"PEB APP，所有人的自由空间，无限制，享生活" descr:@"节省时间和金钱，致力于更好的金融服务" thumImage:[UIImage imageNamed:@"Icon-60"]];
     //设置网页地址
-    NSString *url = [[kUseNetWorkNormalURL stringByAppendingString:@"/public/reg.html?invitationCode="]stringByAppendingString:userInfos.code];
+    NSString *url = [[@"www" stringByAppendingString:@"/public/reg.html?invitationCode="]stringByAppendingString:@"s"];
     shareObject.webpageUrl = url;
     
     //分享消息对象设置分享内容对象

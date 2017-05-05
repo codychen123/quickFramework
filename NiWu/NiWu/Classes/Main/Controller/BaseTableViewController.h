@@ -21,5 +21,4 @@
 
 - (void)hideErrorView;
 
-- (void)pushStoryboard:(NSString *)sbname withId:(NSString *)name;
 @end
